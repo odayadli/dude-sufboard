@@ -1,0 +1,399 @@
+// Place all the styles related to the cocktails controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.surfboard_page {
+  margin-bottom: 5.5rem;
+}
+
+.album {
+  margin-bottom: 5.5rem;
+}
+
+
+.mt-2 {
+  color: black;
+  background-color: #d4c8be;
+  border: lightgray;
+
+  &:hover {
+    background-color: #c7c7bb;
+  }
+}
+
+
+@media screen and (min-width: 375px) and (max-width: 400px) {
+  .auto_type {
+    font-size: 0.8rem;
+    top: 150px;
+  }
+  .carousel-item {
+    height: 250px;
+  }
+}
+
+
+@media screen and (min-width: 410px) and (max-width: 420px) {
+  .auto_type {
+    font-size: 1rem;
+    top: 200px;
+
+  }
+
+  .carousel-item {
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1245px) and (max-width: 1345px) {
+  .carousel-item {
+    height: 500px;
+  }
+}
+
+.text-muted {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+
+.foot {
+  color: black;
+  margin-left: 38px;
+  margin-right: 38px;
+  text-align: center;
+  display: inline-block;
+}
+
+.foot a:hover {
+  border: 3px dashed lightgray;
+  text-decoration: none;
+}
+
+.foot a {
+  color: black;
+}
+
+.edit:hover {
+  border: lightgray;
+  font-style: italic;
+
+  color: #0E0000;
+}
+
+.delete:hover {
+  border: lightgray;
+  font-style: italic;
+  color: #0E0000;
+  background-color: lightpink;
+}
+
+.row-index {
+  margin-right: -15px;
+  margin-left: -15px;
+
+}
+
+.card-index {
+  padding: .75rem;
+  margin-bottom: 2rem;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: #2E2F30; font-family: 'Londrina Solid', cursive; color: #0E0000; border-radius: 15px
+}
+
+
+.card-index:hover {
+  -ms-transform: scale(1); /* IE 9 */
+  -webkit-transform: scale(1); /* Safari 3-8 */
+  transform: scale(1.05);
+}
+
+.card-image {
+  height: 315px;
+  width: 354px;
+  crop: auto;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 30px 0;
+}
+
+td {
+  padding: 10px 0;
+  text-align: center;
+}
+
+
+th {
+  text-align: center;
+}
+
+.image-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 46%;
+  margin: 20px 73px 0 57px;
+}
+
+.text-container {
+  display: inline-block;
+  width: 100%;
+  margin-top: 40px;
+
+}
+
+p a{
+  word-break: keep-all;
+}
+
+@media (max-width: 620px) {
+  .text-container {
+    width: 100%;
+  }
+}
+
+.simple_form {
+  padding: 40px;
+}
+
+
+#form1 {
+  position: absolute;
+  left: 177px;
+  top: 600px;
+}
+
+.explore{
+  position: relative;
+  justify-content: center;
+}
+
+@media screen and (min-width: 375px) and (max-width: 400px) {
+  .new-title {
+    font-size: 1.5em;
+    text-align: center;
+    margin-left: 196px;
+  }
+  #new_cocktail {
+    position: absolute;
+    left: 18px;
+    padding: 0px;
+    top: 86px;
+  }
+
+  .loading {
+    color: #af9f8c;
+    position: unset;
+    font-size: 36px;
+  }
+
+  .footer {
+    left: 15px;
+  }
+}
+
+.not-found-page{
+  position: relative;
+  top: 100px;
+  justify-content: center;
+  left: 151px;
+}
+
+.message-not-found{
+  font-family: 'Londrina Solid', cursive; color: #0E0000; font-size: 4em
+}
+
+
+@media screen and (min-width: 375px) and (max-width: 400px) {
+  .card-index img {
+    width: 320px;
+  }
+}
+
+.delete-icon:hover{
+  background-color: #7f867b;
+}
+
+.fa-trash-alt{
+  transform: scale(1.15,1.15);
+  /* property values: name, duration, iteration, timing-function */
+  animation: jiggle 0.5s infinite linear;
+}
+
+@keyframes jiggle {
+  /* start at 0deg and this scale size.
+     scale size is repeated here to maintain smooth scaling */
+  0% {transform: rotate(0deg) scale(1.15,1.15);}
+  /* midway rotate 2deg right */
+  50% {transform: rotate(4deg) scale(1.15,1.15);}
+  /* end rotate -2deg left */
+  100% {transform: rotate(-2deg) scale(1.15,1.15)}
+}
+
+@media screen and (min-width: 375px) and (max-width: 400px) {
+  .not-found-page{
+    position: unset;
+    top: 0px;
+    left: 0px;
+  }
+  strong > .message-not-found {
+    font-size: 2.3em;
+    margin-left: 47px;
+  }
+
+  .not-found-page img {
+    width: 200px;
+    height: 250px;
+  }
+}
+
+.image-recipe{
+
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.search-header{
+  text-align: center; font-family: 'Londrina Solid', cursive; font-size: 100px
+}
+
+@media screen and (min-width: 375px) and (max-width: 400px) {
+  .search-header {
+    font-size: 63px;
+  }
+
+  .image-container{
+    margin: 0 auto;
+  }
+}
+//
+//body {
+//  background-color: f2fafa;
+//}
+
+
+.filter-cards{
+  margin-top: 46px;
+  text-align: center;
+}
+
+#CALENDAR
+body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: url("https://images.unsplash.com/photo-1468254689784-48093691071d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1122&q=80");
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: inherit;
+    filter: blur(10px);
+  }
+}
+
+.calendar {
+  position: relative;
+  width: 848px;
+  height: 564px;
+  left: 544px;
+  top: 10px;
+  background-color: #fff;
+  box-sizing: border-box;
+  box-shadow: 0 5px 50px rgba(#000, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.calendar__picture {
+  position: relative;
+  height: 200px;
+  padding: 20px;
+  color: #fff;
+  background: #262626 url("https://images.unsplash.com/photo-1516912481808-3406841bd33c?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=183f2924ba5a8429441804609b2d4f61") no-repeat center / cover;
+  text-shadow: 0 2px 2px rgba(#000, 0.2);
+  box-sizing: border-box;
+  
+  &::before {
+    content: "";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to top, rgba(#000, 0.25), rgba(#000, 0.1));
+  }
+  
+  h2 {
+    margin: 0;
+  }
+  
+  h3 {
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+.calendar__date {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
+  grid-gap: 10px;
+  box-sizing: border-box;
+}
+
+.calendar__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  font-weight: 600;
+  color: #262626;
+  
+  &:nth-child(7) {
+    color: #ff685d;
+  }
+}
+
+.calendar__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  color: #262626;
+
+  &:nth-child(7n) {
+    color: #ff685d;
+    font-weight: 700;
+  }
+  
+  &--current,
+  &:hover {
+    background-color: #009688;
+    color: #fff !important;
+    font-weight: 700;
+    cursor: pointer;
+  }
+}
+body {background-color: #659dbd;}
+.card-image1{
+  position: relative;
+  left: 276px;
+}
+
+.card-image-index{
+  border-radius: 10px;
+}
+
+.top-page{
+  margin-top: 64px;
+}

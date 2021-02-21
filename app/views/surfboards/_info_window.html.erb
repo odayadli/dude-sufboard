@@ -1,0 +1,12 @@
+<%= link_to surfboard_path(surfboard) do %>
+
+  <% if surfboard.photo.attached? %>
+    <%= cl_image_tag surfboard.photo.key, height: 100, width: 100, crop: :fill  %>
+  <% else %>
+    <%= image_tag "https://res.cloudinary.com/dhj0qswpc/image/upload/v1613352835/u6u3dr91qab0qzfvu18uj6v31agh.jpg", height: 100, width: 100, crop: :fill %>
+  <% end %>
+
+<% end %>
+<h2><%= link_to surfboard.name, surfboard_path(surfboard) %></h2>
+<h3><%= surfboard.location %></h3>
+<p>£<%= surfboard.price %></p>
