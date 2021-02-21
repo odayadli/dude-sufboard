@@ -7,7 +7,7 @@
             <% if @surfboard.photo.attached? %>
               <%= cl_image_tag @surfboard.photo.key, class: "card-image-index", height: 280, width: 322, crop: :fill %>
             <% else %>
-              <%= image_tag "https://res.cloudinary.com/dhj0qswpc/image/upload/v1613696409/lqa75pzo9l9b3iqr83cjzq1iz9pm.jpg", height: 280, width: 312, crop: :fill %>
+              <%= image_tag("https://res.cloudinary.com/dhj0qswpc/image/upload/v1613696409/lqa75pzo9l9b3iqr83cjzq1iz9pm.jpg", width: '320', height: '280', class: "card-image-index") %>
             <% end %>
           </div>
         </div>
@@ -37,7 +37,8 @@
     </div>
     <div class="col-6">
       <div id="map" style="width: 600px; height: 600px; margin: 0 0 20px 0;"
-           data-markers="<%= @marker.to_json %>">
+           data-markers="<%= @marker.to_json %>"
+           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
   </div>

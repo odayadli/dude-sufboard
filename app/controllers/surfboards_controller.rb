@@ -2,30 +2,29 @@ class SurfboardsController < ApplicationController
   before_action :set_surfboard, only: %i[show edit update destroy]
 
   def index
-    if params[:search].present?
-      @surfboards = Surfboard.where("name ILIKE :search OR location ILIKE :search", search: "%#{params[:search]}%")
-    else
-      @surfboards = Surfboard.all
-    end
+    @surfboards = if params[:search].present?
+                    Surfboard.where('name ILIKE :search OR location ILIKE :search', search: "%#{params[:search]}%")
+                  else
+                    Surfboard.all
+                  end
 
-    case params[:order]
-    when "Price High to Low"
-      @surfboards = Surfboard.order(price: :desc)
-    when "Price Low to High"
-      @surfboards = Surfboard.order(price: :asc)
-    else
-      @surfboards = Surfboard.all
-    end
+    @surfboards = case params[:order]
+                  when 'Price High to Low'
+                    Surfboard.order(price: :desc)
+                  when 'Price Low to High'
+                    Surfboard.order(price: :asc)
+                  else
+                    Surfboard.all
+                  end
     @markers = @surfboards.geocoded.map do |surfboard|
       {
         lat: surfboard.latitude,
         lng: surfboard.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { surfboard: surfboard }),
+        infoWindow: render_to_string(partial: 'info_window', locals: { surfboard: surfboard }),
         image_url: helpers.asset_url('surfboard.png')
       }
     end
   end
-
 
   def my_surfboards
     @surfboards = current_user.surfboards
@@ -37,8 +36,8 @@ class SurfboardsController < ApplicationController
       [{
         lat: @surfboard.latitude,
         lng: @surfboard.longitude,
-        # infoWindow: render_to_string(partial: "info_window", locals: { surfboard: surfboard }),
-        # image_url: helpers.asset_url('https://www.freepik.com/vectors/icons')
+        infoWindow: render_to_string(partial: 'info_window', locals: { surfboard: @surfboard }),
+        image_url: helpers.asset_url('surfboard.png')
       }]
   end
 
@@ -67,9 +66,6 @@ class SurfboardsController < ApplicationController
     @surfboard.destroy
     redirect_to surfboards_path
   end
-
-
-
 
   private
 

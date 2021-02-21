@@ -11,7 +11,7 @@
     <% if @surfboard.photo.attached? %>
       <%=  cl_image_tag @surfboard.photo.key %>
     <% else %>
-      <%= image_tag "https://res.cloudinary.com/dhj0qswpc/image/upload/v1613696409/lqa75pzo9l9b3iqr83cjzq1iz9pm.jpg", height: 550, width: 312, crop: :fill %>
+      <%= image_tag("https://res.cloudinary.com/dhj0qswpc/image/upload/v1613696409/lqa75pzo9l9b3iqr83cjzq1iz9pm.jpg", width: '320', height: '280', class: "card-image-index") %>
     <% end %>
     <div class="card-product-infos">
       <h2><%= @surfboard.name %></h2>

@@ -44,8 +44,8 @@
               <% if surfboard.photo.attached? %>
               <%= cl_image_tag surfboard.photo.key, class: "card-image-index", height: 280, width: 322, crop: :fill %>
               <% else %>
-                <%= image_tag "https://res.cloudinary.com/dhj0qswpc/image/upload/v1613696409/lqa75pzo9l9b3iqr83cjzq1iz9pm.jpg", height: 280, width: 312, crop: :fill %>
-                <% end %>
+                <%= image_tag("https://res.cloudinary.com/dhj0qswpc/image/upload/v1613696409/lqa75pzo9l9b3iqr83cjzq1iz9pm.jpg", width: '320', height: '280', class: "card-image-index") %>
+              <% end %>
                 </a>
                 <div style="height: 230px;">
               <h3><strong class="card-text_index" style="box-shadow: #2E2F30; font-family: 'Londrina Solid', cursive; color: #0E0000 "><%= surfboard.name%></strong></h3>
@@ -56,7 +56,7 @@
                   <% if surfboard.owner.profile_pic.attached? %>
                     <%= cl_image_tag current_user.profile_pic.key, class: "avatar dropdown-toggle card-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
                   <% else %>
-                    <%= image_tag %w[https://kitt.lewagon.com/placeholder/users/odayadli https://kitt.lewagon.com/placeholder/users/gelllery2395 https://kitt.lewagon.com/placeholder/users/Gillis247].sample, class: "avatar dropdown-toggle card-image1", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <%= image_tag "https://kitt.lewagon.com/placeholder/users/odayadli", class: "avatar dropdown-toggle card-image1", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                   <% end %>
               <div class="card-foot">
               </div>
