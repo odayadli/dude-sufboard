@@ -1,10 +1,4 @@
-require 'csv'
-
 class SurfboardsController < ApplicationController
-
-  def initialize
-    @surfboard_service = SurfboardService.new
-  end
 
   def index
     @surfboards = policy_scope(Surfboard)
@@ -12,13 +6,22 @@ class SurfboardsController < ApplicationController
       format.html
       format.csv { send_data @surfboards.to_csv(%w[name details price location user_id]) }
     end
-    @markers = @surfboards.geocoded.map do |surfboard|
-      {
-        lat: surfboard.latitude,
-        lng: surfboard.longitude,
-        image_url: helpers.asset_url('surfboard.png')
-      }
-    end
+  end
+
+  def search_surfboard
+    search = params[:search]
+    @surfboards = if params[:search].present?
+                    SurfboardService.new.search_surfboard(search)
+                  else
+                    SurfboardService.new.all_surfboards
+                  end
+    authorize @surfboards
+  end
+
+  def filter_surfboards
+    order = params[:order]
+    @surfboards = SurfboardService.new.filter_surfboards(order)
+    authorize @surfboards
   end
 
   def my_surfboards
@@ -27,15 +30,15 @@ class SurfboardsController < ApplicationController
   end
 
   def show
-    @surfboard = @surfboard_service.get_surfboard(params[:id])
+    @surfboard = SurfboardService.new.get_surfboard(params[:id])
     authorize @surfboard
     @marker =
       [{
-        lat: @surfboard.latitude,
-        lng: @surfboard.longitude,
-        infoWindow: render_to_string(partial: 'info_window', locals: { surfboard: @surfboard }),
-        image_url: helpers.asset_url('surfboard.png')
-      }]
+         lat: @surfboard.latitude,
+         lng: @surfboard.longitude,
+         infoWindow: render_to_string(partial: 'info_window', locals: { surfboard: @surfboard }),
+         image_url: helpers.asset_url('surfboard.png')
+       }]
   end
 
   def new
@@ -44,11 +47,10 @@ class SurfboardsController < ApplicationController
   end
 
   def create
-    @surfboard = @surfboard_service.create_surfboard(surfboard_params, current_user)
+    @surfboard = SurfboardService.new.create_surfboard(surfboard_params, current_user)
     authorize @surfboard
     redirect_to surfboard_path(@surfboard)
   end
-
 
   def edit
     @surfboard = Surfboard.find(params[:id])
@@ -56,14 +58,13 @@ class SurfboardsController < ApplicationController
   end
 
   def update
-    @surfboard = @surfboard_service.update_surfboard(params[:id], current_user, surfboard_params)
+    @surfboard = SurfboardService.new.update_surfboard(params[:id], current_user, surfboard_params)
     authorize @surfboard
     redirect_to surfboard_path(@surfboard)
   end
 
   def destroy
-    @surfboard_service.delete_surfboard(params[:id], current_user)
-    redirect_to surfboards_path
+    SurfboardService.new.delete_surfboard(params[:id], current_user)
   end
 
   def import_surfboards
@@ -77,6 +78,4 @@ class SurfboardsController < ApplicationController
   def surfboard_params
     params.require(:surfboard).permit(:name, :details, :price, :photo, :location, :search)
   end
-
-
 end

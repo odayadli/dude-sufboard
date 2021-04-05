@@ -3,7 +3,7 @@
 <h1>My Surfboards</h1>
 <h3>You have <%= @surfboards.count %> surfboard<%=@surfboards.count == 1 ? '' : 's'%></h3>
 
-<div class="navbar-cocktail">
+<div class="navbar-surfboard">
   <%= link_to "Add a new surfboard", new_surfboard_path, type: "button", class: "btn btn-primary mt-2" %>
 </div>
 
@@ -35,7 +35,7 @@
                   <i class="fas fa-edit"><%= link_to "Edit me", edit_surfboard_path(surfboard) %></i>
                   </div>
                   <div>
-                  <i class="fas fa-edit" ><%= link_to "Delete me", surfboard_path(surfboard) %></i>
+                  <i class="fas fa-edit" ><%= link_to "Delete me", surfboard_path(surfboard), method: :delete %></i>
                   </div>
                 </div>
               </div>

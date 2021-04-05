@@ -13,7 +13,8 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/mapbox/streets-v9',
+      zoom: 12
     });
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
@@ -31,15 +32,14 @@ const initMapbox = () => {
         .setPopup(popup)
         .addTo(map);
     });
-    fitMapToMarkers(map, markers);
     map.addControl(new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl
     }));
+    fitMapToMarkers(map, markers);
   }
 }
 export { initMapbox };
-
 
 
 

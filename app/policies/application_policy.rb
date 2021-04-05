@@ -34,10 +34,6 @@ class ApplicationPolicy
     false
   end
 
-  def bookings_requests?
-    false
-  end
-
   def my_bookings?
     false
   end
@@ -50,6 +46,14 @@ class ApplicationPolicy
     false
   end
 
+  def search_surfboard?
+    false
+  end
+
+  def filter_surfboards?
+    false
+  end
+  
   class Scope
     attr_reader :user, :scope
 

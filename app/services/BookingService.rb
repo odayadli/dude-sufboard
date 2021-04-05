@@ -15,10 +15,6 @@ class BookingService
     [current_bookings, old_bookings]
   end
 
-  def bookings_requests(user)
-    # @bookings_requested = Booking.select { |booking| booking.surfboard.id == :surfboard_id }
-    Booking.select { |booking| booking.surfboard.user == user }
-  end
 
   def create_booking(booking_params, surfboard_id, user)
     booking = Booking.new(booking_params)

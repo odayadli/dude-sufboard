@@ -5,9 +5,9 @@ class SurfboardPolicy < ApplicationPolicy
     end
   end
 
-  # def new?
-  #   true
-  # end
+  def index?
+    true
+  end
 
   def create?
     true
@@ -31,4 +31,13 @@ class SurfboardPolicy < ApplicationPolicy
   def import_surfboards?
     true
   end
+
+  def search_surfboard?
+    true
+  end
+
+  def filter_surfboards?
+    true
+  end
+
 end

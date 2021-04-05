@@ -17,9 +17,6 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
-  def bookings_requests?
-    true
-  end
 
   def update?
     user == record.user
