@@ -1,38 +1,38 @@
 <div class="container pt-4">
-  <div class="row justify-content-center" style="margin-top: 140px">
-    <div class="col-4">
-      <div class="main-container card-index">
-        <div class="cards">
-          <div>
-            <% if @surfboard.photo.attached? %>
-              <%= cl_image_tag @surfboard.photo.key, class: "card-image-index", height: 280, width: 322, crop: :fill %>
-            <% else %>
-              <%= image_tag "https://res.cloudinary.com/dhj0qswpc/image/upload/v1613696409/lqa75pzo9l9b3iqr83cjzq1iz9pm.jpg", width: '320', height: '280', class: "card-image-index" %>
-            <% end %>
-          </div>
 
-          <strong class="card-text" style="box-shadow: #2E2F30; font-family: 'Londrina Solid', cursive; color: #0E0000 "><%= @surfboard.name %></strong>
-          <!--          <a href="<%#= product_path(product) %>"><%#= image_tag("picture_holder")%><a>-->
-          <p><%= @surfboard.details %></p>
-          <%= @surfboard.price %>
-          <%= @surfboard.location %>
-        </div>
-      </div>
-      <% if user_signed_in? %>
-        <div class="navbar-surfboard">
-          <%= link_to "Book it", new_surfboard_booking_path(@surfboard), type: "button", class: "btn btn-primary mt-2 btn-lg btn-block" %>
-        </div>
-        <div style="font-family: 'Pacifico', cursive;">
-      <% else %>
-        <%= link_to "Book it", new_user_session_path, type: "button", class: "btn btn-primary mt-2 btn-lg btn-block" %>
-      <% end %>
-      </div>
+  <div class="card-trip">
+    <div>
+    <% if @surfboard.photo.attached? %>
+      <%= cl_image_tag @surfboard.photo.key, class: "card-image-index", height: 280, width: 322, crop: :fill %>
+    <% else %>
+      <%= image_tag "https://res.cloudinary.com/dhj0qswpc/image/upload/v1613696409/lqa75pzo9l9b3iqr83cjzq1iz9pm.jpg", width: '320', height: '280', class: "card-image-index" %>
+    <% end %>
     </div>
-    <div class="col-6">
-      <div id="map" style="width: 600px; height: 600px; margin: 0 0 20px 0;"
-           data-markers="<%= @marker.to_json %>"
-           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= @surfboard.name %></h2>
+        <p><%= @surfboard.details %></p>
+        <%= @surfboard.location %>
       </div>
+      <h2 class="card-trip-pricing">Price per hour £<%= @surfboard.price %></h2>
     </div>
+    <% if user_signed_in? %>
+      <div class="navbar-surfboard">
+        <%= link_to "Book it", new_surfboard_booking_path(@surfboard), type: "button", class: "btn btn-primary mt-2 btn-lg btn-block" %>
+      </div>
+      <div style="font-family: 'Pacifico', cursive;">
+    <% else %>
+      <%= link_to "Book it", new_user_session_path, type: "button", class: "btn btn-primary mt-2 btn-lg btn-block" %>
+    <% end %>
+    </div>
+
+
+  </div>
+
+  <div id="map" style=" height: 600px;"
+       data-markers="<%= @marker.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
+
+
