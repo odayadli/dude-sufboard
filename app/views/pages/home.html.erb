@@ -53,7 +53,7 @@
               <p><%= surfboard.details %></p>
               <h5>£<%= surfboard.price %> per hour</h5>
               <h5 style="height: 38px"><%= surfboard.location %></h5>
-                  <% if surfboard.owner.profile_pic.attached? %>
+                  <% if surfboard.user.profile_pic.attached? %>
                     <%= cl_image_tag current_user.profile_pic.key, class: "avatar dropdown-toggle card-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
                   <% else %>
                     <%= image_tag "https://kitt.lewagon.com/placeholder/users/odayadli", class: "avatar dropdown-toggle card-image1", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

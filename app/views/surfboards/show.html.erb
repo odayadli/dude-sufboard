@@ -10,19 +10,12 @@
               <%= image_tag "https://res.cloudinary.com/dhj0qswpc/image/upload/v1613696409/lqa75pzo9l9b3iqr83cjzq1iz9pm.jpg", width: '320', height: '280', class: "card-image-index" %>
             <% end %>
           </div>
-        </div>
-        <div>
+
           <strong class="card-text" style="box-shadow: #2E2F30; font-family: 'Londrina Solid', cursive; color: #0E0000 "><%= @surfboard.name %></strong>
           <!--          <a href="<%#= product_path(product) %>"><%#= image_tag("picture_holder")%><a>-->
           <p><%= @surfboard.details %></p>
-          <% @surfboard.price %>
+          <%= @surfboard.price %>
           <%= @surfboard.location %>
-          <div>
-            <div>
-              <div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <% if user_signed_in? %>
@@ -42,7 +35,4 @@
       </div>
     </div>
   </div>
-</div>
-</div>
-</div>
 </div>

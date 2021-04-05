@@ -1,83 +1,57 @@
 class BookingsController < ApplicationController
+  def initialize
+    @booking_service = BookingService.new
+  end
 
   def index
-    @bookings = Booking.all
+    @bookings = @booking_service.all_booking
   end
 
   def show
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def new
-    @surfboard = Surfboard.find(params[:surfboard_id])
     @booking = Booking.new
+    @surfboard = Surfboard.find(params[:surfboard_id])
+    authorize @booking
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @booking.surfboard = Surfboard.find(params[:surfboard_id])
-    @booking.client = current_user
-    if @booking.save!
-      redirect_to booking_path(@booking)
-    else
-      render :new
-    end
+    @booking = @booking_service.create_booking(booking_params, params[:surfboard_id], current_user)
+    authorize @booking
+    redirect_to booking_path(@booking)
   end
 
   def edit
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def update
-    @booking = Booking.find(params[:id])
-    @booking.surfboard = Surfboard.find(@booking.surfboard_id)
+    @booking = @booking_service.update_booking(booking_params, params[:id], current_user)
+    authorize @booking
+    redirect_to booking_path(@booking)
 
-    if @booking.update!(booking_params)
-      redirect_to surfboards_path
-    else
-      render :edit
-    end
   end
 
   def my_bookings
-    now = DateTime.now
-    @current_bookings = current_user.bookings.where("end_date > ?", now)
-    @old_bookings = current_user.bookings.where("end_date < ?", now)
-
+    my_booking = @booking_service.my_bookings(current_user)
+    @current_bookings = my_booking[0]
+    authorize @current_bookings
   end
 
   def bookings_requests
-    # @bookings_requested = Booking.select { |booking| booking.surfboard.id == :surfboard_id }
-    @bookings_requested = Booking.select { |booking| booking.surfboard.owner == current_user }
-    render bookings_bookings_requests_path
-    # @bookings_requested.surfboard = Surfboard.find(params[:surfboard_id])
-    # if @bookings_requested.find(:surfboard_id).update(approved: true)
-    #   redirect_to bookings_bookings_requests_path
-    # end
-    #   redirect_to bookings_requests_path
-    # else
-    #   render :'bookings/bookings_requests'
-    # end
+    @bookings_requested = @booking_service.bookings_requests(current_user)
+    authorize @bookings_requested
   end
 
   def destroy
-    @booking = Booking.find(params[:id])
-    @booking.client = current_user
-    @booking.destroy
-    redirect_to my_bookings_bookings_path
+    @booking = @booking_service.destroy(params[:id], current_user)
+    authorize @booking
+    redirect_to my_booking_path
   end
-
-  # def booking_request
-  #   @bookings = current_user.bookings
-  #   # /users/{id}/booking_requests
-  #   # get user_id from params
-  #   # get user by id => user = User.find(id)
-  #   # surfboards = user.surfboards
-  #   # @requested_bookings = []
-  #   # for surfboard in surfboards:
-  #   #   surfboard_bookings = Bookings.where("surfboard_id = ", surfboard.id).and("approved", false)
-  #   #   @requested_bookings.concat surfboard_bookings
-  # end
 
   private
 

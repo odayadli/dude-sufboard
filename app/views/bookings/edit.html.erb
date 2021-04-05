@@ -1,10 +1,10 @@
 <div class="container">
   <h1>Edit your booking for <%= @booking.surfboard.name %></h1>
-  <%= simple_form_for @booking do |f| %>
-    <%= f.label :date_of_tour %>
-    <%= f.input :start_date, as: :date, html5: true %>
-    <%= f.input :end_date, as: :date, html5: true %>
-    <%= f.submit "book", class: "btn btn-primary mt-2" %>
+  <%= simple_form_for [@surfboard, @booking] do |f| %>
+    <%# <%= f.label :book_your_dates %>
+    <%= f.input :start_date, as: :datetime, required: false, input_html: {class: "datetimepicker"} %>
+    <%= f.input :end_date, as: :datetime, required: false, input_html: {class: "datetimepicker"} %>
+    <%= f.submit "Let's Surf", class: "button2" %>
   <% end %>
 </div>
 

@@ -28,8 +28,8 @@
   <div >
     <%= simple_form_for [@surfboard, @booking] do |f| %>
     <%# <%= f.label :book_your_dates %>
-    <%= f.input :start_date, as: :datetime, required: false, input_html: {class: "datetimepicker"} %>
-    <%= f.input :end_date, as: :datetime, required: false, input_html: {class: "datetimepicker"} %>
+    <%= f.input :start_date, as: :datetime, required: true, input_html: {class: "datetimepicker"} %>
+    <%= f.input :end_date, as: :datetime, required: true, input_html: {class: "datetimepicker"} %>
     <%= f.submit "Let's Surf", class: "button2" %>
   <% end %>
   </div>
