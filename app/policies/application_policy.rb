@@ -53,7 +53,7 @@ class ApplicationPolicy
   def filter_surfboards?
     false
   end
-  
+
   class Scope
     attr_reader :user, :scope
 
