@@ -1,0 +1,14 @@
+skello:
+  user: user13
+  name: "Skello"
+  details: "for pro only"
+  price: "15"
+  location: "London"
+
+roadstr:
+  user: user13
+  name: "Roadster"
+  details: "good for beginners"
+  price: "11"
+  location: "paris"
+

@@ -16,6 +16,7 @@ class Surfboard < ApplicationRecord
       end
     end
   end
+
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       Surfboard.create! row.to_hash
