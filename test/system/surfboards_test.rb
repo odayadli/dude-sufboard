@@ -31,7 +31,5 @@ class SurfboardsTest < ApplicationSystemTestCase
     click_on 'Create Surfboard'
     # save_and_open_screenshot
 
-    # Should be redirected to Home with new product
-    assert_no_text 'Change your life: Learn to surf'
   end
 end
