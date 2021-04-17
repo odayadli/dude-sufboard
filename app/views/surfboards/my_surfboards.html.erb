@@ -1,7 +1,7 @@
 
 
 <h1>My Surfboards</h1>
-<h3>You have <%= @surfboards.count %> surfboard<%=@surfboards.count == 1 ? '' : 's'%></h3>
+<h3>You have <%= @mysurfboards.count %> surfboard<%=@mysurfboards.count == 1 ? '' : 's'%></h3>
 
 <div class="navbar-surfboard">
   <%= link_to "Add a new surfboard", new_surfboard_path, type: "button", class: "btn btn-primary mt-2" %>
@@ -10,7 +10,7 @@
 <div class="album text-muted">
   <div class="container">
     <div class="row-index row">
-      <% @surfboards.each do |surfboard| %>
+      <% @mysurfboards.each do |surfboard| %>
         <div class="col-sm-12 col-md-4 ">
           <div class="card-index" style="border: 4px solid black; box-shadow: #2E2F30; height: 490px ">
            <a href="<%= surfboard_path(surfboard) %>">
@@ -35,7 +35,7 @@
                   <i class="fas fa-edit"><%= link_to "Edit me", edit_surfboard_path(surfboard) %></i>
                   </div>
                   <div>
-                  <i class="fas fa-edit" ><%= link_to "Delete me", surfboard_path(surfboard), method: :delete %></i>
+                  <i class="fas fa-edit" ><%= link_to "Delete me", surfboard_path(surfboard), method: :delete, remote: true %></i>
                   </div>
                 </div>
               </div>

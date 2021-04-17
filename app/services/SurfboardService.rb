@@ -37,7 +37,7 @@ class SurfboardService
     surfboard
   end
 
-  def delete_surfboard(id, user)
+  def destroy(id, user)
     surfboard = Surfboard.find(id)
     surfboard.user = user
     surfboard.destroy

@@ -1,4 +1,11 @@
- <div class="surfboard_page">
+<div class="flex-center mt-4" data-controller="counter">
+  <div class="badge badge-dark p-3 mr-3">
+    <span data-counter-target="count"><%= @surfboard_counter %></span>
+  </div>
+
+  <button data-action="click->counter#refresh" class="btn btn-outline-secondary">Refresh counter</button>
+</div>
+<div class="surfboard_page">
       <% if user_signed_in? %>
         <div class="navbar-surfboard">
           <%= link_to "Add a new surfboard", new_surfboard_path, type: "button", class: "btn btn-primary mt-2" %>
@@ -42,7 +49,7 @@
                       <% end %>
                     </a>
                     <div style="height: 230px">
-                      <h3><strong class="card-text_index" style="box-shadow: #2E2F30; font-family: 'Londrina Solid', cursive; color: #0E0000 "><%= surfboard.name%></strong></h3>
+                      <h3><strong class="card-text_index" style="box-shadow: #2E2F30; font-family: 'Londrina Solid', cursive; color: #0E0000 " id="surfboard-<%= surfboard.id %>"><%= surfboard.name%></strong></h3>
                       <div class="foot edit" style="background-color: #d4c8be">
                       </div>
                       <p><%= surfboard.details %></p>

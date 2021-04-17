@@ -16,6 +16,7 @@ class SurfboardPolicy < ApplicationPolicy
   def show?
     true
   end
+
   def my_surfboards?
     true
   end

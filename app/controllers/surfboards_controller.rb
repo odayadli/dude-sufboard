@@ -4,6 +4,7 @@ class SurfboardsController < ApplicationController
     @surfboards = policy_scope(Surfboard)
     respond_to do |format|
       format.html
+      format.json { render json: { surfboards: @surfboards } }
       format.csv { send_data @surfboards.to_csv(%w[name details price location user_id]) }
     end
   end
@@ -25,8 +26,8 @@ class SurfboardsController < ApplicationController
   end
 
   def my_surfboards
-    @surfboards = current_user.surfboards
-    authorize @surfboards
+    @mysurfboards = current_user.surfboards
+    authorize @mysurfboards
   end
 
   def show
@@ -49,7 +50,7 @@ class SurfboardsController < ApplicationController
   def create
     @surfboard = SurfboardService.new.create_surfboard(surfboard_params, current_user)
     authorize @surfboard
-    redirect_to surfboard_path(@surfboard)
+    redirect_to surfboards_path(anchor: "surfboard-#{@surfboard.id}")
   end
 
   def edit
@@ -64,7 +65,9 @@ class SurfboardsController < ApplicationController
   end
 
   def destroy
-    SurfboardService.new.delete_surfboard(params[:id], current_user)
+    @surfboards = SurfboardService.new.destroy(params[:id], current_user)
+    authorize @surfboards
+    redirect_to my_surfboards_surfboards_path
   end
 
   def import_surfboards
